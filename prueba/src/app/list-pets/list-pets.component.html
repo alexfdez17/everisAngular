@@ -1,0 +1,44 @@
+<h2>Various posts</h2>
+<table class="table table-striped">
+  
+  <tr *ngFor="let post of posts | slice:0:3" (click)="fillForm(post)">
+    <ng-container *ngIf="post.id <= 50">
+    <td>{{post.userId}}</td>
+    <td>{{post.id}}</td>
+    <td>{{post.title}}</td>
+    </ng-container>
+  </tr>
+
+</table>
+
+<!--<button (click)="doPost()">Post default Post</button>
+<br>
+<input [(ngModel)]="id" type="text">
+<button (click)="doPut(id)">Put this post</button>
+<br>
+<input [(ngModel)]="id2" type="text">
+<button (click)="doDelete(id2)">Delete this post</button>
+<br>
+<br>-->
+
+<h2>Basic CRUD Form</h2>
+
+<form [formGroup]="genericForm" validate>
+    <div class="form-group">
+    <span>UserId</span>
+    <input class="form-control" formControlName="userId"/>
+    <br>
+    <span>Id</span>
+    <input class="form-control" formControlName="id"/>
+    <br>
+    <span>Title</span>
+    <input class="form-control" formControlName="title"/>
+    <br>
+    <span>Body</span>
+    <input class="form-control" formControlName="body"/>
+    <br>
+    <button class="btn btn-success margen" (click)="doPost()" type="submit" [disabled]="!genericForm.get('userId').valid && !genericForm.get('title').valid && !genericForm.get('body').valid">Post</button>
+    <button class="btn btn-primary margen" (click)="doPut()" type="submit" [disabled]="!genericForm.valid">Put</button>
+    <button class="btn btn-danger margen" (click)="doDelete()" type="submit" [disabled]="!genericForm.get('id').valid">Delete</button>
+    </div>
+  </form>

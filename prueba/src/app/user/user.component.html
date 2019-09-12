@@ -1,0 +1,12 @@
+<table>
+    <ng-container *ngIf="posty != undefined">
+    <tr>
+      <td>{{posty.userId}}</td>
+      <td>{{posty.id}}</td>
+      <td>{{posty.title}}</td>
+    </tr>
+    </ng-container>
+  </table>
+
+  <app-button (sendInfoEvent)="sendToChild($event)" [message2]="message"></app-button>
+  <app-text [message]="message" (sendBack)="sendToOtherChild($event)"></app-text>
